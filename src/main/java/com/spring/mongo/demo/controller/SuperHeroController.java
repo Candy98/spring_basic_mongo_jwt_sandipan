@@ -41,6 +41,7 @@ public class SuperHeroController {
     public ResponseEntity<?> update(@RequestBody SuperHero superHero) {
         SuperHero updatedSuperHero = superHeroService.update(superHero);
         return ResponseEntity.ok().body(updatedSuperHero);
+        
     }
 
 

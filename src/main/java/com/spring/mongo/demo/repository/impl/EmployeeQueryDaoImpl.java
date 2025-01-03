@@ -54,17 +54,14 @@ class EmployeeQueryDaoImpl implements EmployeeQueryDao {
 
         Query query = new Query();
         query.addCriteria(Criteria.where("firstName").regex(firstName, "i"));
-
         return mongoTemplate.find(query, Employee.class);
     }
 
 
     @Override
     public Employee getSingleEmployeeByLastName(String lastName) {
-
         Query query = new Query();
         query.addCriteria(Criteria.where("lastName").regex(lastName, "i"));
-
         return mongoTemplate.findOne(query, Employee.class);
     }
 
@@ -73,12 +70,10 @@ class EmployeeQueryDaoImpl implements EmployeeQueryDao {
 
     @Override
     public List<Employee> getEmployeeBySalaryGreaterThan(int salary) {
-
         Query query = new Query();
         query.addCriteria(Criteria.where("salary").gt(salary));
         query.with(Sort.by(Sort.Direction.ASC, "firstName"));
         query.with(Sort.by(new Sort.Order(Sort.Direction.ASC, "firstName").ignoreCase()));
-
         return mongoTemplate.find(query, Employee.class);
     }
 
